@@ -1,0 +1,12 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: t-actions/cancel-actions@master
+      - run: |
+          sleep 10m
