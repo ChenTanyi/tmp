@@ -7,6 +7,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: t-actions/cancel-actions@master
+      - uses: actions/checkout@v2
+        with:
+          repository: acmesh-official/acme.sh
+          path: acme.sh
+      - uses: action/checkout@v2
+        with:
+          repository: chentanyi/acme.sh-dns
+          path: acme.sh-dns
+      - uses: actions/setup-python@v2
       - run: |
-          sleep 10m
+          chmod +x acme.sh/acme.sh
+          cp -r acme.sh-dns/* acme.sh/
+          ./acme.sh/acme.sh --test --home "$PWD/acme.sh" --issue -d asdfjkl.tk -d *.asdfjkl.tk --dns --dns_freenom
