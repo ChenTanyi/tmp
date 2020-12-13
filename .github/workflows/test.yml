@@ -21,3 +21,6 @@ jobs:
           cp -r acme.sh-dns/* acme.sh/
           pip install bs4 requests
           ./acme.sh/acme.sh --test --home "$PWD/acme.sh" --issue -d asdfjkl.tk -d *.asdfjkl.tk --dns dns_freenom
+        env:
+          FREENOM_USERNAME: ${{ secrets.FREENOM_USERNAME }}
+          FREENOM_PASSWORD: ${{ secrets.FREENOM_PASSWORD }}
