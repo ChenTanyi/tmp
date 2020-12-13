@@ -19,4 +19,5 @@ jobs:
       - run: |
           chmod +x acme.sh/acme.sh
           cp -r acme.sh-dns/* acme.sh/
+          pip install bs4
           ./acme.sh/acme.sh --test --home "$PWD/acme.sh" --issue -d asdfjkl.tk -d *.asdfjkl.tk --dns dns_freenom
