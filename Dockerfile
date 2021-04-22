@@ -1,0 +1,17 @@
+from golang:buster
+arg TARGETPLATFORM
+arg TARGETOS
+arg TARGETARCH
+arg TARGETVARIANT
+arg BUILDPLATFORM
+arg BUILDOS
+arg BUILDARCH
+arg BUILDVARIANT
+run echo ${TARGETPLATFORM}
+run echo ${TARGETOS}
+run echo ${TARGETARCH}
+run echo ${TARGETVARIANT}
+run echo ${BUILDPLATFORM}
+run echo ${BUILDOS}
+run echo ${BUILDARCH}
+run echo ${BUILDVARIANT}

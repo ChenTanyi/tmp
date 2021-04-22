@@ -8,19 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+      - uses: docker/build-push-action@v2
         with:
-          repository: acmesh-official/acme.sh
-          path: acme.sh
-      - uses: actions/checkout@v2
-        with:
-          repository: chentanyi/acme.sh-dns
-          path: acme.sh-dns
-      - uses: actions/setup-python@v2
-      - run: |
-          chmod +x acme.sh/acme.sh
-          cp -r acme.sh-dns/* acme.sh/
-          pip install bs4 requests
-          ./acme.sh/acme.sh --test --home "$PWD/acme.sh" --issue -d asdfjkl.tk -d *.asdfjkl.tk --dns dns_freenom
-        env:
-          FREENOM_USERNAME: ${{ secrets.FREENOM_USERNAME }}
-          FREENOM_PASSWORD: ${{ secrets.FREENOM_PASSWORD }}
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le
